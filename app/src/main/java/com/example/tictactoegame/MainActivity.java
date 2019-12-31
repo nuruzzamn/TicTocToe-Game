@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
 
+    //for count drow
+    int drowCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,6 +176,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void draw() {
 
+        drowCount++;
+
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_draw, (ViewGroup) findViewById(R.id.toast_draw_id));
 
@@ -191,13 +196,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updatePointsText() {
 
-        if(player1Points == 11 || player2Points == 11){
+        int count=player1Points + player2Points + drowCount;
+
+        if(count == 11){
 
             resetBoard();
             resetGame();
 
             textViewPlayer1.setText("Player 1 Winning Time: 0");
             textViewPlayer2.setText("Player 2 Winning Time: 0");
+
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.complete_level, (ViewGroup) findViewById(R.id.toast_level_complete));
+
+            TextView toastText = layout.findViewById(R.id.level_complete_text);
+
+            toastText.setText(" Finished 10 level successfully \uD83D\uDE0D .Try Again ");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
 
         }
     }
