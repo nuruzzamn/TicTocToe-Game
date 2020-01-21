@@ -21,4 +21,5 @@ Here use a reset button for reset all winning history and use two custom toast
 
 ![image](https://user-images.githubusercontent.com/48601338/71560628-eb568b80-2a96-11ea-905c-18c8be47e7c8.png)
 
-
+- For show video click this youtube link. Thank you.
+https://youtu.be/b1OdqwJ59w8
